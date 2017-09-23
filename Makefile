@@ -1,13 +1,11 @@
 #Makefile to create posters
 
-TEXMF=/home/roelof/latex//:
-TEXINPUTS=/home/roelof/latex//://:
+#TEXMF=/home/roelof/latex//:
+#TEXINPUTS=/home/roelof/latex//://:
 
-#landscape poster
-main1=IGG_template_landscape
-
-#portait poster
-#main1=IGG_template_portrait
+#main poster tempalte
+main1=IGG_template
+preamble=IGG_posterpreamble.tex
 
 
 sub1=IGG_examplebox.tex IGG_examplerefs.tex IGG_compile.tex
@@ -17,10 +15,21 @@ sub1=IGG_examplebox.tex IGG_examplerefs.tex IGG_compile.tex
 latcom=xelatex
 latopt=-halt-on-error
 
+#default for make without arguments is to make a landscape poster
+all: landscape
 
+#set some symbolic links to the correct shape and default background image
+setportrait:
+		ln -sf IGG_posterpreamble_portrait.tex ${preamble}
+		ln -sf posterbackground_hires_portrait.pdf figures/posterbackground_hires.pdf
 
-#all: ${main1}.bbl ${main1}.pdf
-all: ${main1}.bbl ${main1}.pdf
+setlandscape:
+		ln -sf IGG_posterpreamble_landscape.tex ${preamble}
+		ln -sf posterbackground_hires_landscape.pdf figures/posterbackground_hires.pdf
+
+portrait:setportrait ${main1}.bbl ${main1}.pdf
+
+landscape:setlandscape ${main1}.bbl ${main1}.pdf
 
 #make rules for results poster
 
@@ -36,4 +45,4 @@ ${main1}.bbl:${main1}.aux
 
 
 clean:
-	rm -f ${main1}.bbl ${main1}.pdf
+	rm -f ${main1}.bbl ${main1}.pdf ${preamble} figures/posterbackground_hires.pdf

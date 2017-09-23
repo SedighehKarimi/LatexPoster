@@ -4,13 +4,14 @@
 %% This is essentially a collection of stolen artwork/ideas :) Credits to
 %%Indridi Einarsson, Enrico Kurtenbach and the PGF/tikz wizard till Tantau
 
-%\documentclass[landscape,a0b,final,a4resizeable]{a0poster}
-\documentclass[landscape,a0,final]{a0poster}
-%\documentclass[portrait,a0b,final,a4resizeable]{a0poster}
-%\documentclass[portrait,a0,final]{a0poster}
-%%% Option "a4resizeable" makes it possible ot resize the
-%   poster by the command: psresize -pa4 poster.ps poster-a4.ps
-%   For final printing, please remove option "a4resizeable" !!
+\input{IGG_posterpreamble}
+
+%%%%%Set if to check whether this is landscape or portrait format
+\makeatletter
+\newif\iflandscape
+\@ifclasswith{a0poster}{landscape}{\landscapetrue}{\landscapefalse}
+\makeatother
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%% required packages %%%%%%%%%%%%%%
@@ -215,12 +216,12 @@
 %Insert top blue bar
 \node  at (NW) [inner sep=0,rectangle,fill=uniblue,minimum
   width=\paperwidth-\pgflinewidth,minimum
-  height=8.5cm,anchor=north west]{};
+  height=\topbarheight,anchor=north west]{};
 
 %aInsert bottom blue bar
 \node  at (SW) [inner sep=0,rectangle,fill=uniblue,minimum
   width=\paperwidth-\pgflinewidth,minimum
-  height=5cm,anchor=south west]{};
+  height=\bottombarheight,anchor=south west]{};
 
 %insert IGG logo
 \node at (IGGCOOR) [inner sep=0,rectangle,anchor=north
@@ -245,7 +246,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%% TITLE BOX %%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textblock}{13.5}[0.5,0.](8,0.1)
+\begin{textblock}{\titlewidth}[0.5,0.](8,0.1)
 \begin{center}
 {
     {\Huge \color{white} \sffamily \textbf{\ititle}\\[0.7cm]}
