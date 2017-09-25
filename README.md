@@ -36,7 +36,9 @@ or just
 Same as above but you run
     make portrait
 
-
+## Use pdflatex instead of xelatex
+This disables the Exo2 font for headers, but can be used if no Exo2 fonts can be installed on the system or if no xelatex is installed.
+Just uncomment the line ``#latcom=pdflatex`` in the [Makefile](Makefile).
 
 
 

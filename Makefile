@@ -1,8 +1,5 @@
 #Makefile to create posters
 
-#TEXMF=/home/roelof/latex//:
-#TEXINPUTS=/home/roelof/latex//://:
-
 #main poster tempalte
 main1=IGG_template
 preamble=IGG_posterpreamble.tex
@@ -13,6 +10,9 @@ sub1=IGG_examplebox.tex IGG_examplerefs.tex IGG_compile.tex
 
 
 latcom=xelatex
+#uncoment pdflatex below if no xelatex is available
+#latcom=pdflatex
+
 latopt=-halt-on-error
 
 #default for make without arguments is to make a landscape poster
@@ -33,7 +33,7 @@ landscape:setlandscape ${main1}.bbl ${main1}.pdf
 
 #make rules for results poster
 
-${main1}.pdf: ${main1}.tex ${sub1}
+${main1}.pdf: ${main1}.tex ${preamble} ${sub1}
 	${latcom} ${latop} ${main1}
 
 ${main1}.aux: ${main1}.tex ${sub1}
