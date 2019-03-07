@@ -142,8 +142,8 @@
 \newcommand{\framedfig}[3][width=\textwidth,clip]{
   \refstepcounter{figure}
     \begin{tikzpicture}[inner sep=4.\pgflinewidth]\renewcommand{\baselinestretch}{0.6}
-      \node at ( 0.,0.)[drop shadow,rectangle,draw=uniblue,fill=white,minimum width=\textwidth,rounded corners=0.ex]{
- 	\begin{minipage}{0.97\textwidth}
+      \node at ( 0.,0.)[drop shadow,rectangle,draw=uniblue,fill=white,minimum width=\textwidth,rounded corners=0.ex, inner sep=2mm]{
+ 	\begin{minipage}{\textwidth}
 	  \includegraphics[#1]{#2}
 	  \textcolor{uniblue}{\small Fig. \arabic{figure} #3}
       \end{minipage}};
