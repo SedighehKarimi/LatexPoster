@@ -1,11 +1,11 @@
 #Makefile to create posters
 
 #main poster tempalte
-main1=IGG_template
-preamble=IGG_posterpreamble.tex
+main1=ITC_template
+preamble=ITC_posterpreamble.tex
 
 
-sub1=IGG_examplebox.tex IGG_examplerefs.tex IGG_compile.tex
+sub1=ITC_examplebox.tex ITC_examplerefs.tex ITC_compile.tex
 
 
 
@@ -20,11 +20,11 @@ all: landscape
 
 #set some symbolic links to the correct shape and default background image
 setportrait:
-		ln -sf IGG_posterpreamble_portrait.tex ${preamble}
+		ln -sf ITC_posterpreamble_portrait.tex ${preamble}
 		ln -sf posterbackground_hires_portrait.pdf figures/posterbackground_hires.pdf
 
 setlandscape:
-		ln -sf IGG_posterpreamble_landscape.tex ${preamble}
+		ln -sf ITC_posterpreamble_landscape.tex ${preamble}
 		ln -sf posterbackground_hires_landscape.pdf figures/posterbackground_hires.pdf
 
 portrait:setportrait ${main1}.bbl ${main1}.pdf
