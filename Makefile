@@ -10,6 +10,7 @@ sub1=ITC_examplebox.tex ITC_examplerefs.tex ITC_compile.tex
 
 
 latcom=xelatex
+#latcom=lualatex
 #uncoment pdflatex below if no xelatex is available
 #latcom=pdflatex
 
@@ -45,4 +46,4 @@ ${main1}.bbl:${main1}.aux
 
 
 clean:
-	rm -f ${main1}.bbl ${main1}.pdf ${preamble} figures/posterbackground_hires.pdf
+	rm -f ${main1}.bbl ${main1}.aux ${main1}.pdf ${preamble} figures/posterbackground_hires.pdf
